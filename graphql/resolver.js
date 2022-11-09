@@ -1,3 +1,4 @@
+const todo = require('../models/todo')
 const Todo = require('../models/todo')
 
 const users = [
@@ -47,6 +48,17 @@ module.exports = {
             return await Todo.findAll()
         } catch (e) {
             throw new Error('Fetch todos is not available')
+        }
+    },
+
+    async createTodo({todo}) {
+        try {
+            return await Todo.create({
+                title: todo.title,
+                done: false
+            })
+        } catch (e) {
+            throw new Error('Title is required!')
         }
     }
 }
