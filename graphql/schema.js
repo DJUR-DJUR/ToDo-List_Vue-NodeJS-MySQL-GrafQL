@@ -29,6 +29,7 @@ module.exports = buildSchema(`
     type Query {
         test: TestType!
         random(min: Int!, max: Int!, count: Int!): [Float!]!
+        
         getTodos: [Todo!]!
     }
 
@@ -38,6 +39,9 @@ module.exports = buildSchema(`
 
     type Mutation {
         addTestUser(user: UserInput!): User!
+
         createTodo(todo: TodoInput!): Todo!
+        completeTodo(id: ID!): Todo!
+        deleteTodo(id: ID!): Boolean!
     }
 `)
